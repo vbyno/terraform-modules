@@ -3,9 +3,9 @@ variable "name_prefix" {
   description = "Name prefix of the EC2 instance and all related resources"
 }
 
-variable "ssh_local_key_path" {
+variable "ssh_local_pub_key" {
   type = string
-  description = "Local path to the private SSH key to connect to EC2 instance"
+  description = "Public SSH key to connect to EC2 instance"
 }
 
 variable "docker_compose_file_path" {

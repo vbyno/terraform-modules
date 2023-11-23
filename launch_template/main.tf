@@ -1,6 +1,6 @@
 resource "aws_key_pair" "aws_key" {
   key_name_prefix = "my_aws_key"
-  public_key      = trimspace(file("${var.ssh_local_key_path}.pub"))
+  public_key      = trimspace(var.ssh_local_pub_key)
 }
 
 data "aws_ami" "latest_amazon_linux" {
