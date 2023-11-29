@@ -24,12 +24,6 @@ resource "aws_network_interface" "ongoing_network_interface" {
   )
 }
 
-# resource "aws_network_interface_attachment" "ongoing_attachment" {
-#   instance_id          = aws_instance.aws_server.id
-#   network_interface_id = aws_network_interface.ongoing_network_interface.id
-#   device_index = 0
-# }
-
 resource "aws_security_group" "ec2_security_group" {
   name_prefix = "${var.name_prefix}_sg"
   description = "Allow SSH from the current machine public IP and HTTP for everyone"
