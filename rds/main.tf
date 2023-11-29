@@ -24,7 +24,7 @@ resource "aws_db_instance" "app_db" {
   engine_version       = var.engine_version
   instance_class       = "db.t4g.micro"
   storage_type         = "standard"
-  db_name              = var.name
+  name                 = var.name
   port                 = local.db_port
   identifier_prefix    = "${var.name}-"
   username             = "postgres_user"

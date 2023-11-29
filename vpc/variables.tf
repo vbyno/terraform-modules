@@ -11,3 +11,8 @@ variable "cidr_block" {
 variable "availability_zones" {
   type = list(string)
 }
+
+variable "enable_dns_hostnames" {
+  type = bool
+  default = false
+}

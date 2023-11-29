@@ -2,6 +2,7 @@ resource "aws_vpc" "vpc" {
   # Referencing the cidr_block variable allows the network address
   # to be changed without modifying the configuration.
   cidr_block = var.cidr_block
+  enable_dns_hostnames = var.enable_dns_hostnames
 
   tags = {
     Name = var.name
