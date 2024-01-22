@@ -32,3 +32,8 @@ variable "num_cache_nodes" {
   type = number
   default = 1
 }
+
+variable "apply_immediately" {
+  type = bool
+  default = false
+}

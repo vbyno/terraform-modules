@@ -6,6 +6,7 @@ resource "aws_elasticache_cluster" "redis" {
   parameter_group_name = var.parameter_group_name
   engine_version       = var.engine_version
   port                 = var.redis_port
+  apply_immediately    = var.apply_immediately
   subnet_group_name    = aws_elasticache_subnet_group.redis_sg.name
   security_group_ids   = [
     aws_security_group.redis_connection_security_group.id,
