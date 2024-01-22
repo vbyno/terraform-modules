@@ -8,11 +8,6 @@ variable "ssh_local_pub_key" {
   description = "Public SSH key to connect to EC2 instance"
 }
 
-variable "docker_compose_file_path" {
-  type = string
-  description = "Docker-compose file to upload on EC2 instance"
-}
-
 variable "app_version" {
   type = number
   description = "application version (to recreate ec2 instances)"
@@ -22,8 +17,4 @@ variable "app_version" {
 variable "instance_type" {
   type = string
   default = "t2.micro"
-}
-
-variable "database_url" {
-  type = string
 }
