@@ -23,6 +23,11 @@ variable "parameter_group_name" {
   default = "default.redis7"
 }
 
+variable "engine_version" {
+  type = string
+  default = "7.1"
+}
+
 variable "num_cache_nodes" {
   type = number
   default = 1
