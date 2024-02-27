@@ -33,7 +33,7 @@ EOT
 
 resource "aws_launch_template" "app_template" {
   name_prefix   = "${var.name_prefix}-"
-  image_id      = data.aws_ami.latest_amazon_linux.id
+  image_id      = coalesce(var.launch_template_image_id, data.aws_ami.latest_amazon_linux.id)
   instance_type = var.instance_type
   key_name      = aws_key_pair.aws_key.key_name
   default_version = var.app_version

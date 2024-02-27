@@ -18,3 +18,8 @@ variable "instance_type" {
   type = string
   default = "t2.micro"
 }
+
+variable "launch_template_image_id" {
+  type    = string
+  default = null
+}
