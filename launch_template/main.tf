@@ -29,6 +29,17 @@ service docker start
 usermod -a -G docker ec2-user
 curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
+
+# Allocate space for a 1GB swap file
+sudo dd if=/dev/zero of=/swapfile bs=1M count=2048
+# Secure the swap file
+sudo chmod 600 /swapfile
+# Set up a Linux swap area
+sudo mkswap /swapfile
+# Make the swap file available for immediate use
+sudo swapon /swapfile
+# Ensure the swap file persists on reboot
+sudo echo '/swapfile swap swap defaults 0 0' >> /etc/fstab
 EOT
 }
 
