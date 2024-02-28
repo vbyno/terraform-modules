@@ -12,6 +12,11 @@ variable "launch_template_id" {
   type = string
 }
 
+variable "launch_template_version" {
+  type = string
+  default = "$Latest"
+}
+
 variable "instance_type" {
   type = string
   default = "t3.micro"

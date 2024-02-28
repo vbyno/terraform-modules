@@ -8,7 +8,7 @@ resource "aws_instance" "aws_server" {
 
   launch_template {
     id      = var.launch_template_id
-    version = "$Latest"
+    version = var.launch_template_version
   }
 
   lifecycle {
