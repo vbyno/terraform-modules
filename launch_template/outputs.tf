@@ -3,5 +3,5 @@ output "launch_template_id" {
 }
 
 output "launch_template_version" {
-  value = aws_launch_template.app_template.default_version
+  value = aws_launch_template.app_template.latest_version
 }
