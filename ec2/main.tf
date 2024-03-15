@@ -14,6 +14,11 @@ resource "aws_instance" "aws_server" {
   lifecycle {
     ignore_changes = [tags, user_data]
   }
+
+  root_block_device {
+    volume_size = var.volume_size
+    volume_type = "gp2"
+  }
 }
 
 resource "aws_network_interface" "ongoing_network_interface" {

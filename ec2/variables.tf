@@ -36,3 +36,8 @@ variable "vpc_id" {
   type = string
   description = "VPC TF ID"
 }
+
+variable "volume_size" {
+  type = number
+  default = 8
+}
