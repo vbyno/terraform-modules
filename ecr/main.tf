@@ -44,23 +44,49 @@ resource "aws_ecr_lifecycle_policy" "images_policy" {
 EOF
 }
 
+locals {
+  actions = [
+    "ecr:GetDownloadUrlForLayer",
+    "ecr:BatchGetImage",
+    "ecr:BatchCheckLayerAvailability",
+    "ecr:DescribeRepositories",
+    "ecr:ListImages",
+    "ecr:DescribeImages"
+  ]
+
+  read_iam_identifiers = var.aws_ecr_read_iam_identifiers == "" ? [] : split(",", var.aws_ecr_read_iam_identifiers)
+}
+
 data "aws_iam_policy_document" "ecr_policy" {
   statement {
     sid    = "ReadECRPolicy"
     effect = "Allow"
 
     principals {
-        type        = "AWS"
-        identifiers = var.aws_ecr_read_iam_identifiers == "" ? [] : split(",", var.aws_ecr_read_iam_identifiers)
+      type        = "AWS"
+      identifiers = local.read_iam_identifiers
     }
 
-    actions = [
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:BatchGetImage",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:DescribeRepositories",
-        "ecr:ListImages",
-    ]
+    actions = local.actions
+  }
+
+
+  statement {
+    sid    = "LambdaECRImageCrossAccountRetrievalPolicy"
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+
+    actions = local.actions
+
+    condition {
+      test        = "StringLike"
+      variable    = "aws:sourceArn"
+      values = [for identifier in local.read_iam_identifiers : "arn:aws:lambda:*:${identifier}:function:*"]
+    }
   }
 }
 
