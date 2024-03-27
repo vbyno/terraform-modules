@@ -64,7 +64,7 @@ data "aws_iam_policy_document" "ecr_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = local.read_iam_identifiers
+      identifiers = [for identifier in local.read_iam_identifiers : "arn:aws:iam::${identifier}:root"]
     }
 
     actions = local.actions
