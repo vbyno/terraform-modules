@@ -12,7 +12,7 @@ output "connection_uri" {
     "@",
     local.rds_config.endpoint,
     "/",
-    local.rds_config.name,
+    local.rds_config.db_name,
   ])
 }
 
