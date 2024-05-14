@@ -21,3 +21,18 @@ variable "my_public_ip" {
   type = string
   default = ""
 }
+
+variable "identifier" {
+  description = "The identifier to use for the database instance, if set"
+  type        = string
+}
+
+variable "instance_class" {
+  type = string
+  default = "db.t4g.micro"
+}
+
+variable "allow_major_version_upgrade" {
+  type = bool
+  default = true
+}

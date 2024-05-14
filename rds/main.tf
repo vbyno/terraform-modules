@@ -22,15 +22,16 @@ resource "aws_db_instance" "app_db" {
   max_allocated_storage = 0
   engine               = "postgres"
   engine_version       = var.engine_version
-  instance_class       = "db.t4g.micro"
+  instance_class       = var.instance_class
   storage_type         = "standard"
   db_name              = var.name
+  identifier           = var.identifier
   port                 = local.db_port
-  identifier_prefix    = "${var.name}-"
   username             = "postgres_user"
   password             = random_password.password.result
   skip_final_snapshot  = true
   publicly_accessible  = false
+  allow_major_version_upgrade = var.allow_major_version_upgrade
   db_subnet_group_name = aws_db_subnet_group.default.name
   vpc_security_group_ids = [aws_security_group.security_group_db.id]
 }
