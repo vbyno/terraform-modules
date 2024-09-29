@@ -9,3 +9,9 @@ variable "aws_ecr_read_iam_identifiers" {
   description = "list of IAM identifiers to share repositories with. Separated with comma"
   default = ""
 }
+
+variable "force_delete" {
+  type = bool
+  description = "delete if there are any images in the repo"
+  default = false
+}
