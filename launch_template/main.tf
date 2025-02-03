@@ -40,6 +40,8 @@ mkswap /swapfile
 swapon /swapfile
 # Ensure the swap file persists on reboot
 echo '/swapfile swap swap defaults 0 0' >> /etc/fstab
+
+${var.additional_user_data}
 EOT
 }
 

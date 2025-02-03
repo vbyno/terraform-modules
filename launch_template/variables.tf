@@ -23,3 +23,9 @@ variable "launch_template_image_id" {
   type    = string
   default = null
 }
+
+variable "additional_user_data" {
+  type        = string
+  description = "value to append to the user data script"
+  default     = ""
+}
