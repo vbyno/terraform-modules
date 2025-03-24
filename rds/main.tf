@@ -31,6 +31,7 @@ resource "aws_db_instance" "app_db" {
   password             = random_password.password.result
   skip_final_snapshot  = true
   publicly_accessible  = false
+  deletion_protection  = var.deletion_protection
   allow_major_version_upgrade = var.allow_major_version_upgrade
   db_subnet_group_name = aws_db_subnet_group.default.name
   vpc_security_group_ids = [aws_security_group.security_group_db.id]

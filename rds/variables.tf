@@ -36,3 +36,8 @@ variable "allow_major_version_upgrade" {
   type = bool
   default = true
 }
+
+variable "deletion_protection" {
+  type = bool
+  default = false
+}
